@@ -6,15 +6,15 @@
 //Win clicking on 'Start Over' it resets the game 
 let counter = 30;
 var correctAnswers = 0; 
-var incorrectAnswers = 0; 
+var losses = 0; 
 var unanswered = 0;
-const currentQuestion = 0;  
-const choices = 0; 
+var currentQuestion = 0;  
+//var choices = 0; 
+var intervalId; 
 
 
 
-
-const questions = [
+var questions = [
 
     {
         question:"This George R.R Martin series of books was adapted into HBO's popular 'Game of Thrones' Tv series",
@@ -62,23 +62,67 @@ const questions = [
 
 
     $(document).ready(function() {
+        
+
+
+function nextQuestion() {
+
+    currentQuestion++; 
+    $('#quizResults').empty();
+    displayQuestion(); 
+    console.log("nextQuestion");
+
+}
+
+
+function stop() {
+
+        clearInterval(intervalId);
+        losses++; 
+        nextQuestion(); 
+    }
+
+
+function decrement() {
+    counter--; 
+    $('#timer').html('Timer: ' + counter); 
+
+    if (counter === 0) {
+
+        stop(); 
+
+    }
+
+}
     
 function displayQuestion() {
     
+    choices = 0; 
     //display the question and choices
-
-var question = questions[currentQuestion].question;
-var choices = questions[currentQuestion].choices; 
+    counter = 10; 
+    intervalId = setInterval(decrement, 1000);
+    var question = questions[currentQuestion].question;
+    var choices = questions[currentQuestion].choices; 
 
     $('#quizQuestions').html('<h4>'+ question +'</h4>');
     $('#timer').html('Timer: ' + counter);
-
-    for (var i = 0; i < choices.length; i++){
-
-        $('#quizResults').append("<p style=\"border: 1px solid black;\">" + choices[i] + '</p>');
-        console.log("is this working Two?");
-   }
+    displayChoices(choices); 
+    
 }
+
+function displayChoices(choices) {
+
+
+for (var i = 0; i < choices.length; i++){
+
+    $('#quizResults').append("<p class = 'choice' attr = 'data-random' style = 'border: 1px solid black;'>"  + choices[i] + '</p>');
+    console.log("is this working Two?");
+
+   }
+
+}
+
+
 
 $(".btn").on('click', function() {
 
