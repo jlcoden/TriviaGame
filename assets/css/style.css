@@ -1,0 +1,16 @@
+/* style for jumbotron */
+body {
+ /*   display: table;
+    position: absolute; */
+    background-image: url("../images/fantasy.jpg");
+  }
+
+  .jumbotron {
+     margin-top: 100px; 
+     margin-right: 20px; 
+     margin-left: 20px; 
+     padding-bottom: 60px;
+     padding-top: 10px; 
+     padding-right: 0px; 
+     padding-left: 0px; 
+  }
