@@ -9,8 +9,12 @@ var correctAnswers = 0;
 var incorrectAnswers = 0; 
 var unanswered = 0;
 const currentQuestion = 0;  
+const choices = 0; 
 
-var questions = [
+
+
+
+const questions = [
 
     {
         question:"This George R.R Martin series of books was adapted into HBO's popular 'Game of Thrones' Tv series",
@@ -55,8 +59,10 @@ var questions = [
     
     
     ];
-    $(document).ready(function() {
 
+
+    $(document).ready(function() {
+    
 function displayQuestion() {
     
     //display the question and choices
@@ -64,12 +70,19 @@ function displayQuestion() {
 var question = questions[currentQuestion].question;
 var choices = questions[currentQuestion].choices; 
 
-    $('#quizDiv').html('<h4>'+ question +'</h4>');
+    $('#quizQuestions').html('<h4>'+ question +'</h4>');
     $('#timer').html('Timer: ' + counter);
+
+    for (var i = 0; i < choices.length; i++){
+
+        $('#quizResults').append("<p style=\"border: 1px solid black;\">" + choices[i] + '</p>');
+        console.log("is this working Two?");
+   }
 }
 
-displayQuestion(); 
-console.log("is it working?")
-console.log ( $ );
+$(".btn").on('click', function() {
 
+    displayQuestion(); 
+
+});
 });
