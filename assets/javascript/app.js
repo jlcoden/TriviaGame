@@ -7,7 +7,7 @@
 let counter = 30;
 var correctChoice = 0; 
 var losses = 0; 
-var score = 0; 
+var wins = 0; 
 var unanswered = 0;
 var currentQuestion = 0;  
 var choices = 0; 
@@ -70,17 +70,44 @@ var questions = [
     $(document).ready(function() {
 
 
+//function showScore() {
+//    $("h4").remove(".listQuestion");
+//    $( "p" ).remove( ".choice" );
+ //   clearInterval(intervalId);
+//}
+
 function showScore() {
-    $("h4").remove(".listQuestion");
-    $( "p" ).remove( ".choice" );
     clearInterval(intervalId);
+    
+    $('.container').empty().append(
+        $('<p/>')
+          .addClass("score")
+          .text('You got a total of ' + wins +' question(s) right')
+      );
+      $('.container').append(
+        $('<p/>')
+          .addClass("score")
+          .text('You missed ' + losses +' question(s)')
+      );
+
+      $('.container').append('<button>Start Over</button>')
+
+
+
+
+
 }
+
+
+
         
 function nextQuestion() {
+
+
+    $("h2").show("#timer");
     var lastQuestion = (questions.length - 1) === currentQuestion; 
 
     if (lastQuestion) {
-        alert("Game Over!");
         showScore(); 
 
     } else {
@@ -95,11 +122,9 @@ function loadImage(status) {
    
  //   var correctAnswer = questions[currentQuestion].correctAnswer
   counter = 5; 
-  // $('#quizQuestions').empty();
-  // $('#quizResults').empty().append('<img src= assets/images/'+ image +'>');
  if (status === 'win')  {
-
-    $( "h2" ).empty();
+wins++;
+ $("h2").hide("#timer");
     $('#quizQuestions').empty().append('<img src= assets/images/'+ image +'>');
     $('#quizResults').empty().append(
         $('<p/>')
@@ -108,8 +133,8 @@ function loadImage(status) {
       );
 
  }else{
-
-    $( "h2" ).empty();
+    losses++;
+    $("h2").hide("#timer");
     $('#quizQuestions').empty().append('<img src= assets/images/'+ badImage +'>');
     $('#quizResults').empty().append(
         $('<p/>')
@@ -124,7 +149,7 @@ function stop() {
 
         clearInterval(intervalId);
         timer = 0; 
-        losses++; 
+      //  losses++; 
         nextQuestion(); 
     }
 
@@ -142,7 +167,9 @@ function decrement() {
 }
     
 function displayQuestion() {
-    
+
+  $("h2").show("#timer");
+     $("a").remove(".btn");
     choices = 0; 
     //display the question and choices
     counter = 30; 
@@ -170,8 +197,6 @@ questionOptions = $('#quizResults').append(
       .text(choices[i])
   );
 
-
- console.log(choices[i]);
    }
 
 }
@@ -188,19 +213,18 @@ $(".btn").on('click', function() {
 $(document).on("click", ".choice", function(){
     selectedChoice = ($(this).attr('id'));
     correctChoice = questions[currentQuestion].correctChoice;
-    console.log(correctChoice); 
-    console.log(selectedChoice); 
     image = questions[currentQuestion].correctImage;
     badImage = questions[currentQuestion].incorrectImage;
 
     if (correctChoice === selectedChoice) {
-        score++;
         loadImage('win');
+      
      
 
     } else {
-        losses++;
         loadImage('lost');    
+     
+
     }
   //  nextQuestion();
 });
