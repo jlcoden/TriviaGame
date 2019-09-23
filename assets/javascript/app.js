@@ -15,70 +15,115 @@ var intervalId;
 var choiceOptions; 
 
 
+
 var questions = [
 
     {
         question:"This George R.R Martin series of books was adapted into HBO's popular 'Game of Thrones' Tv series",
         choices: ["The Chronicals of Narnia", "A song of Ice and fire", "The Rain Wilds Chronicals", "Iron Swords Trilogy"],
-        correctChoice: "A song of Ice and fire"
-    
+        correctChoice: "A song of Ice and fire",
+        correctImage: "gotCorrect.gif",
+        incorrectImage:"gotIncorrect.gif"
+     
     },
     
     {
         question: "In what book do 24 children fight to the death?" ,
         choices: ["Harry Potter", "Hunger Games", "Eragon", "Lord of the Rings"],
-        correctChoice: "Hunger Games"
+        correctChoice: "Hunger Games",
+        correctImage: "hgCorrect.gif",
+        incorrectImage:"hgIncorrect.gif"
     },
     
     { 
         question: "What is the name of the lion resurrected in C.S. Lewis' tales of Narnia?",
         choices: ["Adam" , "Jesus", "Aslan", "James"],
-        correctChoice: "Aslan"
+        correctChoice: "Aslan",
+        correctImage: "narniaCorrect.gif",
+        incorrectImage:"narniaIncorrect.gif"
     
     },
     
     { 
         question: "This Philp Pullman series is often viewed as an atheist counterpoint to the world of Narnia",
         choices: ["His Dark Materials", "American Gods", "Neverwhere", "Assassin's Apprentice"],
-        correctChoice: "His Dark Materials"
+        correctChoice: "His Dark Materials",
+        correctImage: "hdmCorrect.gif",
+        incorrectImage:"hdmIncorrect.gif"
     
     },
     
     { 
         question: "What is the name of the protagonist wizard in 'The Lord of the Rings",
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
-        correctChoice: "Gandalf"
+        correctChoice: "Gandalf",
+        correctImage: "gandalfCorrect.gif",
+        incorrectImage:"gandalfIncorrect.gif"
     
     }, 
     
-    { 
-        question: "Who brought the lamp post into Narnia? The Magician's Nephew",
-        choices: ["Jadis" , "Aslan", "Mr. Tumnus", "Polly"],
-        correctChoice: "Jadis"
-    
-    }
     
     
     ];
 
 
     $(document).ready(function() {
+
+
+function showScore() {
+    $("h4").remove(".listQuestion");
+    $( "p" ).remove( ".choice" );
+    clearInterval(intervalId);
+}
         
-
-
 function nextQuestion() {
+    var lastQuestion = (questions.length - 1) === currentQuestion; 
+
+    if (lastQuestion) {
+        alert("Game Over!");
+        showScore(); 
+
+    } else {
 
     currentQuestion++; 
     $('#quizResults').empty();
     displayQuestion(); 
-    console.log("nextQuestion");
+    }
+}
 
+function loadImage(status) {
+   
+ //   var correctAnswer = questions[currentQuestion].correctAnswer
+  counter = 5; 
+  // $('#quizQuestions').empty();
+  // $('#quizResults').empty().append('<img src= assets/images/'+ image +'>');
+ if (status === 'win')  {
+
+    $( "h2" ).empty();
+    $('#quizQuestions').empty().append('<img src= assets/images/'+ image +'>');
+    $('#quizResults').empty().append(
+        $('<p/>')
+          .addClass("correctAnswer")
+          .text("Congrats, that's correct!")
+      );
+
+ }else{
+
+    $( "h2" ).empty();
+    $('#quizQuestions').empty().append('<img src= assets/images/'+ badImage +'>');
+    $('#quizResults').empty().append(
+        $('<p/>')
+          .addClass("correctAnswer")
+          .text("Sorry, that's incorrect!")
+      );
+}
 }
 
 
 function stop() {
 
         clearInterval(intervalId);
+        timer = 0; 
         losses++; 
         nextQuestion(); 
     }
@@ -100,12 +145,14 @@ function displayQuestion() {
     
     choices = 0; 
     //display the question and choices
-    counter = 50; 
+    counter = 30; 
     intervalId = setInterval(decrement, 1000);
     var question = questions[currentQuestion].question;
     var choices = questions[currentQuestion].choices; 
+    var correctImage = questions[currentQuestion].correctImage;
+    var incorrectImage = questions[currentQuestion].incorrectImage;
 
-    $('#quizQuestions').html('<h4>'+ question +'</h4>');
+    $('#quizQuestions').html('<h4 class = "listQuestion">'+ question +'</h4>');
     $('#timer').html('Timer: ' + counter);
     displayChoices(choices); 
     
@@ -116,11 +163,10 @@ function displayChoices(choices) {
 for (var i = 0; i < choices.length; i++){
 // var choiceOptions = $('#quizResults').append("<p class = 'choice' style = 'border: 1px solid black;'>"  + choices[i] + '</p>'); 
 
- $('#quizResults').append(
+questionOptions = $('#quizResults').append(
     $('<p/>')
       .attr("id", choices[i])
       .addClass("choice")
-     // .append("<span/>")
       .text(choices[i])
   );
 
@@ -144,15 +190,19 @@ $(document).on("click", ".choice", function(){
     correctChoice = questions[currentQuestion].correctChoice;
     console.log(correctChoice); 
     console.log(selectedChoice); 
+    image = questions[currentQuestion].correctImage;
+    badImage = questions[currentQuestion].incorrectImage;
 
     if (correctChoice === selectedChoice) {
         score++;
-        alert("That's correct!");
-        nextQuestion();
+        loadImage('win');
+     
+
     } else {
         losses++;
-        alert("No, Sorry that's incorrect");
+        loadImage('lost');    
     }
+  //  nextQuestion();
 });
 
 }); 
