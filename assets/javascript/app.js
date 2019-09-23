@@ -5,13 +5,14 @@
 //At the end show the correct and incorrect answers, timer is no longer clicking down. 
 //Win clicking on 'Start Over' it resets the game 
 let counter = 30;
-var correctAnswers = 0; 
+var correctChoice = 0; 
 var losses = 0; 
+var score = 0; 
 var unanswered = 0;
 var currentQuestion = 0;  
-//var choices = 0; 
+var choices = 0; 
 var intervalId; 
-
+var choiceOptions; 
 
 
 var questions = [
@@ -99,7 +100,7 @@ function displayQuestion() {
     
     choices = 0; 
     //display the question and choices
-    counter = 10; 
+    counter = 50; 
     intervalId = setInterval(decrement, 1000);
     var question = questions[currentQuestion].question;
     var choices = questions[currentQuestion].choices; 
@@ -112,12 +113,19 @@ function displayQuestion() {
 
 function displayChoices(choices) {
 
-
 for (var i = 0; i < choices.length; i++){
+// var choiceOptions = $('#quizResults').append("<p class = 'choice' style = 'border: 1px solid black;'>"  + choices[i] + '</p>'); 
 
-    $('#quizResults').append("<p class = 'choice' attr = 'data-random' style = 'border: 1px solid black;'>"  + choices[i] + '</p>');
-    console.log("is this working Two?");
+ $('#quizResults').append(
+    $('<p/>')
+      .attr("id", choices[i])
+      .addClass("choice")
+     // .append("<span/>")
+      .text(choices[i])
+  );
 
+
+ console.log(choices[i]);
    }
 
 }
@@ -129,4 +137,22 @@ $(".btn").on('click', function() {
     displayQuestion(); 
 
 });
+
+
+$(document).on("click", ".choice", function(){
+    selectedChoice = ($(this).attr('id'));
+    correctChoice = questions[currentQuestion].correctChoice;
+    console.log(correctChoice); 
+    console.log(selectedChoice); 
+
+    if (correctChoice === selectedChoice) {
+        score++;
+        alert("That's correct!");
+        nextQuestion();
+    } else {
+        losses++;
+        alert("No, Sorry that's incorrect");
+    }
 });
+
+}); 

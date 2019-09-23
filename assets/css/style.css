@@ -14,3 +14,14 @@ body {
      padding-right: 0px; 
      padding-left: 0px; 
   }
+
+  p{
+     margin-top: 10px; 
+     padding: 10px; 
+  }
+
+  .choice {
+     
+   border: 1px solid black;
+
+  }
