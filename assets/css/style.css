@@ -1,11 +1,10 @@
-/* style for jumbotron */
+/*style for body*/
 body {
- /*   display: table;
-    position: absolute; */
     background-image: url("../images/fantasy.jpg");
     background-repeat: no-repeat;
   }
 
+/* style for jumbotron */
   .jumbotron {
      margin-top: 100px; 
      margin-right: 20px; 
@@ -16,27 +15,31 @@ body {
      padding-left: 0px; 
   }
 
+  /*style for paragraph tags*/
   p{
      margin-top: 10px; 
      padding: 10px; 
   }
 
+    /*style for div that holds the question choices*/
   .choice {
      
    border: 1px solid black;
 
   }
 
+   /* style for p.lead class*/
   .lead{
      padding: 0px; 
   }
 
+  /*style for timer div*/
   #timer{
      margin-bottom: 10px; 
      font-size: 1.5em; 
   }
 
-  
+    /*style for images*/
   img{
    max-width: 100%;
 }
