@@ -19,7 +19,7 @@ var choiceOptions;
 var questions = [
 
     {
-        question:"This George R.R Martin series of books was adapted into HBO's popular 'Game of Thrones' Tv series",
+        question:"This George R.R Martin series of books was adapted into HBO's popular 'Game of Thrones' TV series",
         choices: ["The Chronicals of Narnia", "A song of Ice and fire", "The Rain Wilds Chronicals", "Iron Swords Trilogy"],
         correctChoice: "A song of Ice and fire",
         correctImage: "gotCorrect.gif",
@@ -54,7 +54,7 @@ var questions = [
     },
 
     { 
-        question: "In the books of Harry Potter, what term is used by the wizarding world to describe a person who does not possess any magical ability?",
+        question: "In the Harry Potter books, what term is used by the wizarding world to describe a person who does not possess any magical ability?",
         choices: ["Muggle", "Squib", "Noob", "Mandrake"],
         correctChoice: "Muggle",
         correctImage: "hpCorrect.gif",
@@ -65,7 +65,7 @@ var questions = [
 
     
     { 
-        question: "What is the name of the protagonist wizard in 'The Lord of the Rings",
+        question: "What is the name of the protagonist wizard in 'The Lord of the Rings'?",
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
         correctChoice: "Gandalf",
         correctImage: "gandalfCorrect.gif",
