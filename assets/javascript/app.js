@@ -45,13 +45,24 @@ var questions = [
     },
     
     { 
-        question: "This Philp Pullman series is often viewed as an atheist counterpoint to the world of Narnia",
+        question: "This Philp Pullman series is often viewed as an atheist counterpoint to C.S Lewis's world of Narnia",
         choices: ["His Dark Materials", "American Gods", "Neverwhere", "Assassin's Apprentice"],
         correctChoice: "His Dark Materials",
         correctImage: "hdmCorrect.gif",
         incorrectImage:"hdmIncorrect.gif"
     
     },
+
+    { 
+        question: "In the books of Harry Potter, what term is used by the wizarding world to describe a person who does not possess any magical ability?",
+        choices: ["Muggle", "Squib", "Noob", "Mandrake"],
+        correctChoice: "Muggle",
+        correctImage: "hpCorrect.gif",
+        incorrectImage:"hpIncorrect.gif"
+    
+    },
+
+
     
     { 
         question: "What is the name of the protagonist wizard in 'The Lord of the Rings",

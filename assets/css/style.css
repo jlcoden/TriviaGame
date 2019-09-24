@@ -3,6 +3,7 @@ body {
  /*   display: table;
     position: absolute; */
     background-image: url("../images/fantasy.jpg");
+    background-repeat: no-repeat;
   }
 
   .jumbotron {
