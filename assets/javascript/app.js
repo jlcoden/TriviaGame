@@ -67,14 +67,10 @@ var questions = [
     ];
 
 
+    
+
     $(document).ready(function() {
 
-
-//function showScore() {
-//    $("h4").remove(".listQuestion");
-//    $( "p" ).remove( ".choice" );
- //   clearInterval(intervalId);
-//}
 
 function showScore() {
     clearInterval(intervalId);
@@ -89,18 +85,13 @@ function showScore() {
           .addClass("score")
           .text('You missed ' + losses +' question(s)')
       );
-
-      $('.container').append('<button>Start Over</button>')
-
-
-
-
+  
+        var r= $('<input type="button" class = "resetBtn" value="Reset" onClick="window.location.reload();"/>');
+        $(".container").append(r);
 
 }
 
 
-
-        
 function nextQuestion() {
 
 
@@ -165,9 +156,12 @@ function decrement() {
     }
 
 }
+
+
+
     
 function displayQuestion() {
-
+    console.log("Start");
   $("h2").show("#timer");
      $("a").remove(".btn");
     choices = 0; 
@@ -188,7 +182,6 @@ function displayQuestion() {
 function displayChoices(choices) {
 
 for (var i = 0; i < choices.length; i++){
-// var choiceOptions = $('#quizResults').append("<p class = 'choice' style = 'border: 1px solid black;'>"  + choices[i] + '</p>'); 
 
 questionOptions = $('#quizResults').append(
     $('<p/>')
@@ -201,10 +194,13 @@ questionOptions = $('#quizResults').append(
 
 }
 
-
-
 $(".btn").on('click', function() {
 
+    counter = 30;
+    currentQuestion = 0;
+    wins = 0; 
+    losses = 0; 
+    intervalId = null;
     displayQuestion(); 
 
 });
@@ -226,6 +222,8 @@ $(document).on("click", ".choice", function(){
      
 
     }
+
+    
   //  nextQuestion();
 });
 

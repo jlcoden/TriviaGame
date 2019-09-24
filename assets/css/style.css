@@ -34,3 +34,8 @@ body {
      margin-bottom: 10px; 
      font-size: 1.5em; 
   }
+
+  
+  img{
+   max-width: 100%;
+}
