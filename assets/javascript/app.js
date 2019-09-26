@@ -232,7 +232,7 @@ function timerStop() {
          $('#quizResults').empty().append(
         $('<p/>')
           .addClass("timeUp")
-          .text("I'm sorry your time is up!")
+          .text("Sorry, your time is up!")
            );
            $('#quizResults').append(
                //add paragraph stating what the correct answer was
