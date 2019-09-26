@@ -22,6 +22,8 @@ body {
  p{
     margin-top: 10px; 
     padding: 10px; 
+    font-size: 1.5em; 
+   
  }
 
    /*style for div that holds the question choices*/
@@ -31,14 +33,19 @@ body {
   border-radius: 4px;
   cursor: pointer;
   background-color: white; 
+  font-size: 1.5em; 
+
   
  }
+
 
 .choice:hover { background-color: #87957B; }
 
   /* style for p.lead class*/
  .lead{
     padding: 0px; 
+    font-size: 2em; 
+
  }
 
  /*style for timer div*/
@@ -67,3 +74,19 @@ body {
    background-color: #577364 !important;
    color: white;
 }
+
+/* Style for the paragraph tags in score display */
+.score {
+   padding: 0; 
+   margin-bottom: 10px; 
+   font-size: 1.5em; 
+
+}
+
+.correctAnswer{
+   padding: 0; 
+   margin-bottom: 10px;  
+   font-size: 1.5em;
+
+}
+

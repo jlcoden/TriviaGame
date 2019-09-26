@@ -123,7 +123,6 @@ function nextQuestion() {
 
 function loadImage(status) {
     console.log("Load Image"); 
- //   var correctAnswer = questions[currentQuestion].correctAnswer
 imageCounter = 6; 
 imageCounter--; 
 
@@ -149,6 +148,7 @@ imageCounter--;
       
           $('#quizResults').append( $('<p/>') 
           //show correct answer 
+          .addClass("correctAnswer")
           .text("The correct answer was " + correctChoice )
           );
       setTimeout(nextQuestion, 3 * 1000);
@@ -227,7 +227,7 @@ $(".btn").on('click', function() {
     currentQuestion = 0;
     wins = 0; 
     losses = 0; 
-  //  intervalId = null;
+    intervalId = null;
     console.log("On click start"); 
     displayQuestion(); 
 
@@ -251,7 +251,6 @@ $(document).on("click", ".choice", function(){
     }
 
     
-  //  nextQuestion();
 });
 
 }); 
