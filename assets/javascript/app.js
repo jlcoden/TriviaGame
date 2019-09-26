@@ -1,5 +1,5 @@
 //counter for counting down on questions
-let counter = 30;
+let counter = 20;
 //veriable to setting correctChoice
 var correctChoice; 
 //var for keeping track of losses
@@ -28,7 +28,8 @@ var questions = [
         choices: ["The Chronicals of Narnia", "A song of Ice and fire", "The Rain Wilds Chronicals", "Iron Swords Trilogy"],
         correctChoice: "A song of Ice and fire",
         correctImage: "gotCorrect.gif",
-        incorrectImage:"gotIncorrect.gif"
+        incorrectImage:"gotIncorrect.gif",
+        timeUpImage: "timeUp.gif"
      
     },
     
@@ -37,7 +38,8 @@ var questions = [
         choices: ["Harry Potter", "Hunger Games", "Eragon", "Lord of the Rings"],
         correctChoice: "Hunger Games",
         correctImage: "hgCorrect.gif",
-        incorrectImage:"hgIncorrect.gif"
+        incorrectImage:"hgIncorrect.gif",
+        timeUpImage: "hgTime.gif"
     },
     
     {   //question 3
@@ -45,16 +47,18 @@ var questions = [
         choices: ["Adam" , "Jesus", "Aslan", "James"],
         correctChoice: "Aslan",
         correctImage: "narniaCorrect.gif",
-        incorrectImage:"narniaIncorrect.gif"
+        incorrectImage:"narniaIncorrect.gif",
+        timeUpImage: "narniaTime.gif"
     
-    },
+     },
     
     {   //question 4
         question: "This Philp Pullman series is often viewed as an atheist counterpoint to C.S Lewis's world of Narnia",
         choices: ["His Dark Materials", "American Gods", "Neverwhere", "Assassin's Apprentice"],
         correctChoice: "His Dark Materials",
         correctImage: "hdmCorrect.gif",
-        incorrectImage:"hdmIncorrect.gif"
+        incorrectImage:"hdmIncorrect.gif",
+        timeUpImage: "hdmTime.gif"
     
     },
 
@@ -64,15 +68,14 @@ var questions = [
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
         correctChoice: "Gandalf",
         correctImage: "gandalfCorrect.gif",
-        incorrectImage:"gandalfIncorrect.gif"
+        incorrectImage:"gandalfIncorrect.gif",
+        timeUpImage: "lotrTime.gif"
     
     }, 
     
     
     
     ];
-
-
     
     //document wrapper 
     $(document).ready(function() {
@@ -116,7 +119,7 @@ function nextQuestion() {
     //console log for debugging
     console.log("Next question");
     //set counter to 20
-    counter = 30; 
+    counter = 20; 
     //add h2 tag to show timer 
     $("h2").show("#timer");
     //check to see if on last question 
@@ -159,7 +162,7 @@ imageCounter--;
           .text("Congrats, that's correct!")
       );
       //set Timeout for the nextQuestion method to 30 seconds 
-      setTimeout(nextQuestion, 3 * 1000);
+      setTimeout(nextQuestion, 2 * 1000);
 //else if it's not the win status and the wrong answer is chosen
  }else{
      //increment losses 
@@ -181,7 +184,7 @@ imageCounter--;
           .text("The correct answer was " + correctChoice )
           );
       //setTimeOut for nextQuestion method for 30 seconds 
-      setTimeout(nextQuestion, 3 * 1000);
+      setTimeout(nextQuestion, 2 * 1000);
 }
 //after loading image and the timer hits 0 go to imageTimerStop function
 if (imageCounter === 0) {
@@ -198,7 +201,7 @@ function imageTimerStop() {
     //clearInterval for IMageIntervalId
     clearInterval(imageIntervalId); 
     //go to and set timeout for nextQuestion fuction, 30 seconds
-    setTimeout(nextQuestion, 3 * 1000);
+    setTimeout(nextQuestion, 2 * 1000);
 }
 
 //function to detect timer at 0 and tracking unanswered questions
@@ -209,9 +212,39 @@ function timerStop() {
         clearInterval(intervalId);
         //increment unanswered counter
         unanswered++; 
-        //navigate to and setTimeout for nextQuestion function 
-        setTimeout(nextQuestion, 3 * 1000);
+      showTimeUp(); 
+    
     }
+
+    //function to show player time is up
+    function showTimeUp() {
+        //define timeUpImage
+        var timeUpImage = questions[currentQuestion].timeUpImage;
+        var correctChoice = questions[currentQuestion].correctChoice;
+        //set image counter to 6 seconds
+        imageCounter = 6; 
+        //decrement the image counter
+        imageCounter--; 
+        $("h2").hide("#timer");
+        //empty the quizQuestions div and display the gif for time is up
+        $('#quizQuestions').empty().append('<img src= assets/images/'+ timeUpImage +'>');
+        //empty the quizResults div and add paragraphs stating the player's time is up
+         $('#quizResults').empty().append(
+        $('<p/>')
+          .addClass("timeUp")
+          .text("I'm sorry your time is up!")
+           );
+           $('#quizResults').append(
+               //add paragraph stating what the correct answer was
+            $('<p/>')
+              .addClass("timeUp")
+              .text("The correct answer was " + correctChoice )
+
+           ); 
+        setTimeout(nextQuestion, 6000);
+
+        }
+
 
 //function to count down timer for questions
 function decrement() {
@@ -234,7 +267,7 @@ function decrement() {
 //displayQuestion Method
 function displayQuestion() {
     //set counter time
-    counter = 30; 
+    counter = 20; 
     //set Interval for counting down 
     intervalId = setInterval(decrement, 1000);
     //set choices to 0
