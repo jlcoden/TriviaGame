@@ -38,7 +38,7 @@ body {
   
  }
 
-
+/* style to add hover effect over choice selection */
 .choice:hover { background-color: #87957B; }
 
   /* style for p.lead class*/
@@ -83,6 +83,7 @@ body {
 
 }
 
+/* style for correct answer paragraph class */
 .correctAnswer{
    padding: 0; 
    margin-bottom: 10px;  
