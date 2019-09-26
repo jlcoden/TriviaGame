@@ -30,7 +30,11 @@ body {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
+  background-color: white; 
+  
  }
+
+.choice:hover { background-color: #87957B; }
 
   /* style for p.lead class*/
  .lead{
