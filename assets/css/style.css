@@ -1,49 +1,65 @@
 /*style for body*/
 body {
-    background-image: url("../images/fantasy2.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-  }
+   background-image: url("../images/fantasy2.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   width: 100%;
+   height: 100%;
+ }
 
 /* style for jumbotron */
-  .jumbotron {
-     margin-top: 100px; 
-     margin-right: 20px; 
-     margin-left: 20px; 
-     padding-bottom: 60px;
-     padding-top: 10px; 
-     padding-right: 0px; 
-     padding-left: 0px; 
-  }
+ .jumbotron {
+    margin-top: 100px; 
+    margin-right: 20px; 
+    margin-left: 20px; 
+    padding-bottom: 60px;
+    padding-top: 10px; 
+    padding-right: 0px; 
+    padding-left: 0px; 
+ }
 
-  /*style for paragraph tags*/
-  p{
-     margin-top: 10px; 
-     padding: 10px; 
-  }
+ /*style for paragraph tags*/
+ p{
+    margin-top: 10px; 
+    padding: 10px; 
+ }
 
-    /*style for div that holds the question choices*/
-  .choice {
-   border: 2px solid lightgrey;
-   padding: 10px;
-   border-radius: 4px;
-   cursor: pointer;
-  }
+   /*style for div that holds the question choices*/
+ .choice {
+  border: 2px solid lightgrey;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+ }
 
-   /* style for p.lead class*/
-  .lead{
-     padding: 0px; 
-  }
+  /* style for p.lead class*/
+ .lead{
+    padding: 0px; 
+ }
 
-  /*style for timer div*/
-  #timer{
-     margin-bottom: 10px; 
-     font-size: 1.5em; 
-  }
+ /*style for timer div*/
+ #timer{
+    margin-bottom: 10px; 
+    font-size: 1.5em; 
+ }
 
-    /*style for images*/
-  img{
-   max-width: 100%;
+   /*style for images*/
+ img{
+  max-width: 100%;
+}
+
+ /*style for start button*/
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #577364 !important;
+}
+
+ /*style for reset button*/
+.resetBtn{
+
+   padding: .5rem 1rem;
+   font-size: 1.25rem;
+   line-height: 1.5;
+   border-radius: .3rem;
+   background-color: #577364 !important;
+   color: white;
 }

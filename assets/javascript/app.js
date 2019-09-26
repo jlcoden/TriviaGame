@@ -4,7 +4,7 @@
 //if run out of time, state that they ran out of time and move on to the next question 
 //At the end show the correct and incorrect answers, timer is no longer clicking down. 
 //Win clicking on 'Start Over' it resets the game 
-let counter = 30;
+let counter = 20;
 var correctChoice = 0; 
 var losses = 0; 
 var wins = 0; 
@@ -13,6 +13,8 @@ var currentQuestion = 0;
 var choices = 0; 
 var intervalId; 
 var choiceOptions; 
+var imageCounter = 6; 
+var imageIntervalId = 0; 
 
 
 
@@ -53,17 +55,7 @@ var questions = [
     
     },
 
-    { 
-        question: "In the Harry Potter books, what term is used by the wizarding world to describe a person who does not possess any magical ability?",
-        choices: ["Muggle", "Squib", "Noob", "Mandrake"],
-        correctChoice: "Muggle",
-        correctImage: "hpCorrect.gif",
-        incorrectImage:"hpIncorrect.gif"
-    
-    },
 
-
-    
     { 
         question: "What is the name of the protagonist wizard in 'The Lord of the Rings'?",
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
@@ -84,6 +76,7 @@ var questions = [
 
 
 function showScore() {
+    console.log("show score");
     clearInterval(intervalId);
     
     $('.container').empty().append(
@@ -104,7 +97,8 @@ function showScore() {
 
 
 function nextQuestion() {
-
+    console.log("Next question");
+    counter = 20; 
 
     $("h2").show("#timer");
     var lastQuestion = (questions.length - 1) === currentQuestion; 
@@ -121,11 +115,13 @@ function nextQuestion() {
 }
 
 function loadImage(status) {
-   
+    console.log("Load Image"); 
  //   var correctAnswer = questions[currentQuestion].correctAnswer
-  counter = 5; 
+imageCounter = 6; 
+imageCounter--; 
+
  if (status === 'win')  {
-wins++;
+     wins++; 
  $("h2").hide("#timer");
     $('#quizQuestions').empty().append('<img src= assets/images/'+ image +'>');
     $('#quizResults').empty().append(
@@ -133,9 +129,9 @@ wins++;
           .addClass("correctAnswer")
           .text("Congrats, that's correct!")
       );
-
+      setTimeout(nextQuestion, 3 * 1000);
  }else{
-    losses++;
+     losses++; 
     $("h2").hide("#timer");
     $('#quizQuestions').empty().append('<img src= assets/images/'+ badImage +'>');
     $('#quizResults').empty().append(
@@ -143,20 +139,32 @@ wins++;
           .addClass("correctAnswer")
           .text("Sorry, that's incorrect!")
       );
+      setTimeout(nextQuestion, 3 * 1000);
 }
+if (counter === 0) {
+
+    imageStop(); 
+
+}
+}
+
+function imageStop() {
+    console.log("imageStop"); 
+    clearInterval(imageIntervalId); 
+    setTimeout(nextQuestion, 3 * 1000);
 }
 
 
 function stop() {
-
+    console.log("stop"); 
         clearInterval(intervalId);
-        timer = 0; 
-      //  losses++; 
-        nextQuestion(); 
+        losses++; 
+        setTimeout(nextQuestion, 3 * 1000);
     }
 
 
 function decrement() {
+    console.log("decrement");
     counter--; 
     $('#timer').html('Timer: ' + counter); 
 
@@ -168,17 +176,15 @@ function decrement() {
 
 }
 
-
-
     
 function displayQuestion() {
-    console.log("Start");
+    counter = 20; 
+    intervalId = setInterval(decrement, 1000);
+    console.log("Load Question"); 
   $("h2").show("#timer");
      $("a").remove(".btn");
     choices = 0; 
     //display the question and choices
-    counter = 30; 
-    intervalId = setInterval(decrement, 1000);
     var question = questions[currentQuestion].question;
     var choices = questions[currentQuestion].choices; 
     var correctImage = questions[currentQuestion].correctImage;
@@ -191,7 +197,7 @@ function displayQuestion() {
 }
 
 function displayChoices(choices) {
-
+    console.log("Display Choices"); 
 for (var i = 0; i < choices.length; i++){
 
 questionOptions = $('#quizResults').append(
@@ -206,18 +212,19 @@ questionOptions = $('#quizResults').append(
 }
 
 $(".btn").on('click', function() {
-
-    counter = 30;
     currentQuestion = 0;
     wins = 0; 
     losses = 0; 
-    intervalId = null;
+  //  intervalId = null;
+    console.log("On click start"); 
     displayQuestion(); 
 
 });
 
 
 $(document).on("click", ".choice", function(){
+    clearInterval(intervalId);
+    console.log("On click select choice"); 
     selectedChoice = ($(this).attr('id'));
     correctChoice = questions[currentQuestion].correctChoice;
     image = questions[currentQuestion].correctImage;
@@ -225,12 +232,9 @@ $(document).on("click", ".choice", function(){
 
     if (correctChoice === selectedChoice) {
         loadImage('win');
-      
-     
 
-    } else {
-        loadImage('lost');    
-     
+    } else { 
+        loadImage('lost'); 
 
     }
 
