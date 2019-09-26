@@ -8,13 +8,13 @@ let counter = 20;
 var correctChoice = 0; 
 var losses = 0; 
 var wins = 0; 
-var unanswered = 0;
 var currentQuestion = 0;  
 var choices = 0; 
 var intervalId; 
 var choiceOptions; 
 var imageCounter = 6; 
 var imageIntervalId = 0; 
+var unanswered = 0; 
 
 
 
@@ -82,13 +82,20 @@ function showScore() {
     $('.container').empty().append(
         $('<p/>')
           .addClass("score")
-          .text('You got a total of ' + wins +' question(s) right')
+          .text('Correct Answers: ' + wins)
       );
       $('.container').append(
         $('<p/>')
           .addClass("score")
-          .text('You missed ' + losses +' question(s)')
+          .text('Incorrect Answers: ' + losses)
       );
+
+      $('.container').append(
+        $('<p/>')
+          .addClass("score")
+          .text('Unanswered: ' + unanswered)
+      );
+  
   
         var r= $('<input type="button" class = "resetBtn" value="Reset" onClick="window.location.reload();"/>');
         $(".container").append(r);
@@ -163,7 +170,7 @@ function imageStop() {
 function stop() {
     console.log("stop"); 
         clearInterval(intervalId);
-        losses++; 
+        unanswered++; 
         setTimeout(nextQuestion, 3 * 1000);
     }
 
