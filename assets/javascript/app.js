@@ -138,7 +138,12 @@ imageCounter--;
         $('<p/>')
           .addClass("correctAnswer")
           .text("Sorry, that's incorrect!")
-      );
+          );
+      
+          $('#quizResults').append( $('<p/>') 
+          //show correct answer 
+          .text("The correct answer was " + correctChoice )
+          );
       setTimeout(nextQuestion, 3 * 1000);
 }
 if (counter === 0) {
