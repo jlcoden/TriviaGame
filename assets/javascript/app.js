@@ -1,5 +1,5 @@
 //counter for counting down on questions
-let counter = 20;
+let counter = 30;
 //veriable to setting correctChoice
 var correctChoice; 
 //var for keeping track of losses
@@ -116,7 +116,7 @@ function nextQuestion() {
     //console log for debugging
     console.log("Next question");
     //set counter to 20
-    counter = 20; 
+    counter = 30; 
     //add h2 tag to show timer 
     $("h2").show("#timer");
     //check to see if on last question 
@@ -234,7 +234,7 @@ function decrement() {
 //displayQuestion Method
 function displayQuestion() {
     //set counter time
-    counter = 20; 
+    counter = 30; 
     //set Interval for counting down 
     intervalId = setInterval(decrement, 1000);
     //set choices to 0
