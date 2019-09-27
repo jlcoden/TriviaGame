@@ -62,8 +62,31 @@ var questions = [
     
     },
 
+    
+    {   //question 5
+        question: "In Harry Poter, what do they call a person who lacks Magical abilities?",
+        choices: ["Squib", "Hippogriff", "Mandrake", "Muggle"],
+        correctChoice: "Muggle",
+        correctImage: "hpCorrect.gif",
+        incorrectImage:"hpIncorrect.gif",
+        timeUpImage: "hpTimeUp.gif"
+    
+    },
+
 
     {   //question 5
+        question: "In Neil Gaiman's 'American Gods', what is Wednesday's real identity?",
+        choices: ["Thor", "Loki", "Odin", "Zeus"],
+        correctChoice: "Odin",
+        correctImage: "agCorrect.gif",
+        incorrectImage:"agIncorrect.gif",
+        timeUpImage: "agTimeUp.gif"
+    
+    },
+
+
+
+    {   //question 6
         question: "What is the name of the protagonist wizard in 'The Lord of the Rings'?",
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
         correctChoice: "Gandalf",
@@ -162,7 +185,7 @@ imageCounter--;
           .text("Congrats, that's correct!")
       );
       //set Timeout for the nextQuestion method to 30 seconds 
-      setTimeout(nextQuestion, 2 * 1000);
+      setTimeout(nextQuestion, 6 * 1000);
 //else if it's not the win status and the wrong answer is chosen
  }else{
      //increment losses 
@@ -184,10 +207,10 @@ imageCounter--;
           .text("The correct answer was " + correctChoice )
           );
       //setTimeOut for nextQuestion method for 30 seconds 
-      setTimeout(nextQuestion, 2 * 1000);
+      setTimeout(nextQuestion, 6 * 1000);
 }
 //after loading image and the timer hits 0 go to imageTimerStop function
-if (imageCounter === 0) {
+if (imageCounter === 6) {
     //imageTimerStop
     imageTimerStop(); 
 
@@ -201,7 +224,7 @@ function imageTimerStop() {
     //clearInterval for IMageIntervalId
     clearInterval(imageIntervalId); 
     //go to and set timeout for nextQuestion fuction, 30 seconds
-    setTimeout(nextQuestion, 2 * 1000);
+    setTimeout(nextQuestion, 6 * 1000);
 }
 
 //function to detect timer at 0 and tracking unanswered questions
