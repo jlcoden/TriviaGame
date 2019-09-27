@@ -64,17 +64,16 @@ var questions = [
 
     
     {   //question 5
-        question: "In Harry Poter, what do they call a person who lacks Magical abilities?",
+        question: "In Harry Potter, what do they call a person who lacks Magical abilities?",
         choices: ["Squib", "Hippogriff", "Mandrake", "Muggle"],
         correctChoice: "Muggle",
         correctImage: "hpCorrect.gif",
         incorrectImage:"hpIncorrect.gif",
         timeUpImage: "hpTimeUp.gif"
-    
     },
 
 
-    {   //question 5
+    {   //question 6
         question: "In Neil Gaiman's 'American Gods', what is Wednesday's real identity?",
         choices: ["Thor", "Loki", "Odin", "Zeus"],
         correctChoice: "Odin",
@@ -85,8 +84,7 @@ var questions = [
     },
 
 
-
-    {   //question 6
+    {   //question 7
         question: "What is the name of the protagonist wizard in 'The Lord of the Rings'?",
         choices: ["Merlin" , "Dumbledore", "Oz", "Gandalf"],
         correctChoice: "Gandalf",
